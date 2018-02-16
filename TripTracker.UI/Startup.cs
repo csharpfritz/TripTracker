@@ -50,11 +50,13 @@ namespace TripTracker.UI
 
 			services.AddAuthorization(configure =>
 			{
+
 				configure.AddPolicy("CreateTrips", policy =>
 				{
-					policy.RequireUserName("jeff@jeffreyfritz.com")
+					policy.RequireAuthenticatedUser()
 						.Build();
 				});
+
 			});
 
 			// Register no-op EmailSender used by account confirmation and password reset during development
@@ -80,7 +82,7 @@ namespace TripTracker.UI
 
 			app.UseAuthentication();
 
-			app.UseMvc();
+			app.UseMvcWithDefaultRoute();
 		}
 	}
 }

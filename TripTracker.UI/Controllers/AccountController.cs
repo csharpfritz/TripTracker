@@ -9,6 +9,7 @@ using TripTracker.UI.Data;
 
 namespace TripTracker.UI.Controllers
 {
+
 	[Route("[controller]/[action]")]
 	public class AccountController : Controller
 	{

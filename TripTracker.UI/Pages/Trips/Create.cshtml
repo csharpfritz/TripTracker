@@ -11,27 +11,15 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Trip.Name" class="control-label"></label>
-                <input asp-for="Trip.Name" class="form-control" />
-                <span asp-validation-for="Trip.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Trip.StartDate" class="control-label"></label>
-                <input asp-for="Trip.StartDate" class="form-control" />
-                <span asp-validation-for="Trip.StartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Trip.EndDate" class="control-label"></label>
-                <input asp-for="Trip.EndDate" class="form-control" />
-                <span asp-validation-for="Trip.EndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+			<form method="post">
+				<div asp-validation-summary="ModelOnly" danger="" ></div>
+				
+				<vc:edit-trip trip="Model.Trip"></vc:edit-trip>
+
+				<div class="form-group">
+					<input type="submit" value="Create" class="btn btn-default" />
+				</div>
+			</form>
     </div>
 </div>
 
