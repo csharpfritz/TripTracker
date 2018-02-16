@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  backservice:
+    image: triptrackerbackservice
+    build:
+      context: .
+      dockerfile: TripTracker.BackService/Dockerfile
+
+  ui:
+    image: triptrackerui
+    environment:
+      - serviceUrl=http://backservice
+    build:
+      context: .
+      dockerfile: TripTracker.UI/Dockerfile
+    links:
+      - backservice
+
+  db:
+    image: "microsoft/mssql-server-linux"

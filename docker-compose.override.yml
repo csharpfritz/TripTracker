@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  backservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5003:80"
+
+  ui:
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ConnectionStrings__DefaultConnection: "Server=db;Database=TripTracker;user=sa;password=TripTracker1234$$;MultipleActiveResultSets=true"
+    ports:
+      - "5004:80"
+
+  db:
+    environment:
+      SA_PASSWORD: "TripTracker1234$$"
+      ACCEPT_EULA: "Y"

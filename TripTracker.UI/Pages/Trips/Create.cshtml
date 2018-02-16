@@ -13,8 +13,8 @@
     <div class="col-md-4">
 			<form method="post">
 				<div asp-validation-summary="ModelOnly" danger="" ></div>
-				
-				<vc:edit-trip trip="Model.Trip"></vc:edit-trip>
+
+				@await Component.InvokeAsync("EditTrip")
 
 				<div class="form-group">
 					<input type="submit" value="Create" class="btn btn-default" />
