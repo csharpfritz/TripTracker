@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using TripTracker.BackService.Data;
 
 namespace TripTracker.BackService
 {
@@ -24,8 +26,10 @@ namespace TripTracker.BackService
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddTransient<Models.Repository>();
+			//services.AddTransient<Models.Repository>();
 			services.AddMvc();
+
+      services.AddDbContext<TripContext>(options=> options.UseSqlite("Data Source=JeffsTrips.db"));
 
 			services.AddSwaggerGen(options =>
 					options.SwaggerDoc("v1", new Info { Title = "Trip Tracker", Version = "v1" })
@@ -54,6 +58,7 @@ namespace TripTracker.BackService
 
 			app.UseMvc();
 
+			TripContext.SeedData(app.ApplicationServices);
 
 		}
 	}
