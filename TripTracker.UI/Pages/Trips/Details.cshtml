@@ -1,0 +1,37 @@
+﻿@page
+@model TripTracker.UI.Pages.Trips.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Trip</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Trip.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trip.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Trip.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trip.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Trip.EndDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trip.EndDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Trip.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
