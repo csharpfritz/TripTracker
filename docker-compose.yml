@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: TripTracker.BackService/Dockerfile
+    depends_on:
+      - db
 
   ui:
     image: triptrackerui
