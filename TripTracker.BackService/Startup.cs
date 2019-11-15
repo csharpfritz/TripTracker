@@ -29,7 +29,8 @@ namespace TripTracker.BackService
 			//services.AddTransient<Models.Repository>();
 			services.AddMvc();
 
-      services.AddDbContext<TripContext>(options=> options.UseSqlite("Data Source=JeffsTrips.db"));
+		    services.AddDbContext<TripContext>(
+		        options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 			services.AddSwaggerGen(options =>
 					options.SwaggerDoc("v1", new Info { Title = "Trip Tracker", Version = "v1" })
